@@ -1,0 +1,148 @@
+﻿@using WebShopMobile_core.Common
+@model List<Cart>
+@{
+    ViewBag.Title = "Giohang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 style="text-align:center">THÔNG TIN GIỎ HÀNG</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>E Store - eCommerce HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="eCommerce HTML Template Free Download" name="keywords">
+    <meta content="eCommerce HTML Template Free Download" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="~/wwwroot/lib/slick/slick.css" rel="stylesheet">
+    <link href="~/wwwroot/lib/slick/slick-theme.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/wwwroot/css/style.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3f6ff;
+        }
+
+        .cart-page .table input {
+            width: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Breadcrumb End -->
+    <!-- Cart Start -->
+    <div class="cart-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="cart-page-inner">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr style="text-align:center;font-weight:bold">
+                                        
+                                        <td>Tên SP</td>
+                                        <td>Ảnh</td>
+                                        <td>Số lượng</td>
+                                        <td>Đơn giá</td>
+                                        <td>Thành tiền</td>
+                                        <td width="50px"></td>
+                                        <td width="100px"></td>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-middle">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            
+                                            <td>@item.sTensanpham</td>
+                                            <td><img src="~/wwwroot/img/@item.sHinhanhsanpham" width="70" /></td>
+                                            @using (Html.BeginForm("CapnhatGiohang", "Cart", new { @iMaSp = item.iIDsanpham }))
+                                            {
+                                                <td>
+                                                    <input type="number" min="1" name="txtSoluong" value="@item.iSoluong" style="background-color:white; color: black" />
+                                                </td>
+                                                <td>@String.Format("{0:0}", item.dDongia)</td>
+                                                <td>@String.Format("{0:0}", item.dThanhtien)</td>
+                                                <td>@Html.ActionLink("Xóa", "XoaGiohang", new { @iMaSp = item.iIDsanpham })</td>
+                                                <td style="text-align:center"><input width="100" type="submit" value="Cập nhật" style="background-color:white; color: red" /></td>
+                                            }
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart-page-inner">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="coupon">
+                                    <input type="text" placeholder="Coupon Code">
+                                    <button>Apply Code</button>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="cart-summary">
+                                    <div class="cart-content">
+                                        <h1>Thông tin đặt hàng</h1>
+                                        <p>Số lượng sản phẩm: <span class="tsl">@ViewBag.Tongsoluong</span></p>
+                                        <p>Số tiền: <span class="ttien">@String.Format("{0:0}", ViewBag.Tongtien)</span> VND</p>
+                                        <p>Phí Ship: <span class="ship">30000</span> VND</p>
+                                        <h2>Số tiền phải trả: <span class="money"></span></h2>
+                                    </div>
+                                    <div class="cart-btn">
+                                     
+                                        <a href="/Cart/XoaTatcaGiohang/" class="btn btn-success btn-lg active btn-app" role="button" aria-pressed="true" style="margin-top:20px">Xóa giỏ hàng</a>
+                                        <a href="/Cart//Dathang" class="btn btn-success btn-lg active btn-app" role="button" aria-pressed="true" style="margin-top:20px;float:right">Đặt hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/wwwroot/Website/lib/easing/easing.min.js"></script>
+    <script src="~/wwwroot/Website/lib/slick/slick.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/wwwroot/Website/js/main.js"></script>
+    <script>
+        var ttien = Number(document.querySelector(".ttien").innerHTML);
+        var ship = Number(document.querySelector(".ship").innerHTML);
+
+        var money = parseInt(ttien) + ship;
+
+
+        document.querySelector(".money").innerHTML = money;
+    </script>
+</body>
+</html>
+
+
+
+
+
+

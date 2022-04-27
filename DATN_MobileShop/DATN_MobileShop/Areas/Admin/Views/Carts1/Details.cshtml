@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebShopMobile_core.Models.Cart_Details>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin đơn hàng</h2>
+<style type='text/css'>
+    table {
+        counter-reset: rowNumber;
+    }
+
+    .stt {
+        counter-increment: rowNumber;
+    }
+
+    table tr td:first-child::before {
+        content: counter(rowNumber);
+        min-width: 1em;
+        margin-right: 0.5em;
+    }
+</style>
+@using System.Globalization;
+@{
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+}
+<table class="table">
+    <tr>
+        <th>
+            Số thứ tự
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Thành tiền
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr class="stt">
+            <td>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.productName)
+            </td>
+            <td>
+                <img src="~/wwwroot/img/@item.Product.photo" width="70" />
+            </td>
+            <td>
+                <span>@String.Format(cul, "{0:N0}", item.Product.price)</span>
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.quanity)
+            </td>
+            <td>
+                <span>@String.Format(cul, "{0:N0}", item.price)</span>
+            </td>
+        </tr>
+    }
+</table>
+
+<p>Tổng tiền: <span>@String.Format(cul, "{0:N0}", ViewBag.Tongtien)</span></p>
+<hr />
+<p>@Html.ActionLink("Trở về", "Index")</p>
+

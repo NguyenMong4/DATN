@@ -1,0 +1,81 @@
+﻿@model WebShopMobile_core.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="grocino-form">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto">
+                <form class="form-signin">
+
+                    <div class="ui form">
+                        <div class="ui left icon input w-100 ">
+                            <h1 style="text-align: center;color:blue;border:rgb(94, 92, 92) solid 2px;border-radius: 4px;height:70px;padding-top: 18px;width:100%">THÔNG TIN TÀI KHOẢN</h1>
+
+                        </div>
+                        <br /><br />
+                        <div style="border: 1px solid black; padding-top: 30px; padding-bottom: 30px; border-radius:5px ">
+                            <div class="w-100 row field">
+                                <div class="col-3"></div>
+                                <div class="col-3">
+                                    <label for="name" style="color:black; font-size:18px;">Họ tên: </label>
+                                </div>
+                                <div class="col-6">
+                                    <label for="name" style="color:black; font-size:18px;">@Model.fullname</label>
+                                </div>
+
+                            </div>
+                            <div class="w-100 row field">
+                                <div class="col-3"></div>
+                                <div class="col-3">
+                                    <label for="name" style="color:black; font-size:18px;">Số điện thoại:</label>
+                                </div>
+                                <div class="col-6">
+                                    <label for="name" style="color:black; font-size:18px;">@Model.phone</label>
+                                </div>
+
+                            </div>
+                            <div class="w-100 row field">
+                                <div class="col-3"></div>
+                                <div class="col-3">
+                                    <label for="name" style="color:black; font-size:18px;">Email:</label>
+                                </div>
+                                <div class="col-6">
+                                    <label for="name" style="color:black; font-size:18px;">@Model.email</label>
+                                </div>
+                            </div>
+                            <div class="w-100 row field">
+                                <div class="col-3"></div>
+                                <div class="col-3">
+                                    <label for="name" style="color:black; font-size:18px;">Địa chỉ:</label>
+                                </div>
+                                <div class="col-6">
+                                    <label for="name" style="color:black; font-size:18px;">@Model.address</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+                <div class="form-signin__link" style="margin-top:20px">
+                    <a href="@Url.Action("SuaTaiKhoan","TaiKhoans")">
+                        <p style="font-size: 20px;color:red">Cập Nhật</p>
+                    </a>
+                </div>
+
+                <div class="form-signin__link">
+                    <a href="@Url.Action("SuaMatKhau","TaiKhoans")">
+                        <p style="font-size: 20px;color:red">Đổi mật khẩu</p>
+                    </a>
+                </div>
+            </div>
+    </div>
+</div>
+
+</div>
+

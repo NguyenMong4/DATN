@@ -1,0 +1,144 @@
+﻿
+@model PagedList.IPagedList<WebShopMobile_core.Common.Products>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Product List Start -->
+<div class="product-view">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-view-top">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="product-search">
+                                        @using (Html.BeginForm())
+                                        {
+                                            @Html.TextBox("searchstring", ViewBag.CurrentFilter as string)
+                                            <button><i class="fa fa-search"></i></button>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="product-short">
+                                        <div class="dropdown">
+                                            <div class="dropdown-toggle" data-toggle="dropdown">Chức năng</div>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="/Product/Product_search?sortOrder=@ViewBag.Ram" class="dropdown-item">Ram</a>
+                                                <a href="/Product/Index?sortOrder=@ViewBag.pin" class="dropdown-item">Pin</a>
+                                                <a href="/Product/Index?sortOrder=@ViewBag.screen" class="dropdown-item">Màn hình</a>
+                                                <a href="/Product/Index?sortOrder=@ViewBag.rom" class="dropdown-item">Bộ nhớ trong</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="product-price-range">
+                                        <div class="dropdown">
+                                            <div class="dropdown-toggle" data-toggle="dropdown">Tìm kiếm theo giá</div>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="/Product/Index?sortOrder=@ViewBag.saptheogiatang" class="dropdown-item">Giá tăng</a>
+                                                <a href="/Product/Index?sortOrder=@ViewBag.saptheogiagiam" class="dropdown-item">Giá giảm</a>
+                                                <a href="/Product/Index?sortOrder=@ViewBag.saptheogia100_300" class="dropdown-item">1tr-3tr</a>
+                                                <a href="/Product/Index?sortOrder=@ViewBag.saptheogia300_500" class="dropdown-item">3tr-5tr</a>
+                                                <a href="/Product/Index?sortOrder=@ViewBag.saptheogia500_700" class="dropdown-item">5tr-7tr</a>
+                                                <a href="/Product/Index?sortOrder=@ViewBag.saptheogia700" class="dropdown-item">Từ 7tr</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <a href=@Url.Action("Details", "Product")>
+                                        @{
+                                            string ImagePath = "~/wwwroot/img/" + item.product.photo;
+                                        }
+                                        <img src=@Url.Content(ImagePath) alt="Product Image">
+                                    </a>
+                                    <div class="product-action">
+                                        <a href="@Url.Action("ThemGiohang", "Cart", new {@IDsanpham = item.product.id, @strURL = Request.Url.ToString()})"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="/Product/Details/@item.product.id"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-title">
+                                        @item.product.productName
+                                    </div>
+                                    <div class="product-price">
+                                        @{
+                                            double n = (double)((double)item.product.price * (item.product.endow / 100));
+                                            double giagoc = (double)item.product.price + n;
+                                        }
+                                        <span class="product-price-title-old">@String.Format("{0:0,0}", giagoc) đ</span>
+                                        <span class="product-price-title-new">@String.Format("{0:0,0}", item.product.price) đ</span>
+                                    </div>
+
+                                    <div class="product-param">
+                                        <i class="product-param-icon-heart far fa-heart"></i>
+                                        <div class="product-param-bought">
+                                            <div class="product-param-bought-icon-star">
+                                                <i class="yellow fas fa-star"></i>
+                                                <i class="yellow fas fa-star"></i>
+                                                <i class="yellow fas fa-star"></i>
+                                                <i class="yellow fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <div class="product-param-bought-compare">20</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-favorite">
+                                        <i class="product-favorite-icon-check fas fa-check"></i>
+                                        Yêu thích
+                                    </div>
+
+                                    <div class="product-sale">
+                                        <span class="product-sale-persent">@item.product.endow %</span>
+                                        <span class="product-sale-label">GIẢM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product List End -->
+<!-- Brand Start -->
+<div class="brand">
+    <div class="container-fluid">
+        <div class="brand-slider">
+            <div class="brand-item"><img src="img/brand-1.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-2.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-3.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-4.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-5.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-6.png" alt=""></div>
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder = ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
+}))
+

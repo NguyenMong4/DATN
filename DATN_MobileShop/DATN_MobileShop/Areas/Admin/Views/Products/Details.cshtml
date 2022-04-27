@@ -1,0 +1,228 @@
+﻿@model WebShopMobile_core.Models.Product_detail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product_detail</h4>
+    <hr />
+    <dl class="dl-horizontal">  
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.productName)
+        </dd>
+        <dt>
+            Màu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.color.color_name)
+        </dd>
+
+        <dt>
+            Độ rộng màn hình
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Screen_size)
+        </dd>
+
+        <dt>
+            Dung lượng pin
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.battery_capacity)
+        </dd>
+
+        <dt>
+            Camera trước
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Camera_rear)
+        </dd>
+
+        <dt>
+            Camera sau
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.front_camera)
+        </dd>
+
+        <dt>
+            Hệ điều hành
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.operating_system)
+        </dd>
+
+        <dt>
+            Ram
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ram)
+        </dd>
+
+        <dt>
+            Bộ nhớ trong
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rom)
+        </dd>
+
+        <dt>
+            Sim
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sim)
+        </dd>
+
+        <dt>
+            Hình ảnh khác
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.More_Image)
+        </dd>
+
+        <dt>
+            Thông tin
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Information)
+        </dd>
+
+        <dt>
+            Độ dày
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+        <dt>
+            Chất liệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.material)
+        </dd>
+
+        <dt>
+            Ra mắt ngày
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.release_time)
+        </dd>
+
+        <dt>
+            Thiết kế
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Design)
+        </dd>
+
+        <dt>
+            Chip
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chip)
+        </dd>
+
+        <dt>
+            Tốc độ CPU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPU_speed)
+        </dd>
+    
+
+        <dt>
+            Xuất xứ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locations)
+        </dd>
+
+        <dt>
+            Ngày tạo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_date)
+        </dd>
+
+        <dt>
+            Người tạo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_by)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descriptions)
+        </dd>
+
+        <dt>
+            Lượt mua
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.viewcount)
+        </dd>
+
+        <dt>
+            Lượt thích
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tophot)
+        </dd>
+
+     @*   <dt>
+            @Html.DisplayNameFor(model => model.quantily)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantily)
+        </dd>*@
+
+        <dt>
+            Số lượng tồn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantily)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit_pd", new { id = Model.id }) |
+  
+    @Html.ActionLink("Trở về", "Index")
+</p>

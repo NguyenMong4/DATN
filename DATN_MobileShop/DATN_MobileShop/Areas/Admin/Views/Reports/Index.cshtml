@@ -1,0 +1,127 @@
+﻿@model IEnumerable<WebShopMobile_core.Common.Products>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type='text/css'>
+    table {
+        counter-reset: rowNumber;
+    }
+
+    .stt {
+        counter-increment: rowNumber;
+    }
+
+    table tr td:first-child::before {
+        content: counter(rowNumber);
+        min-width: 1em;
+        margin-right: 0.5em;
+    }
+</style>
+@using System.Globalization;
+@{
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<h2>Thống kê hàng tháng</h2>
+
+@using (Html.BeginForm("Index", "Reports", FormMethod.Get))
+{
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <input type="text" class="form-control" value="@ViewBag.SearchString" placeholder="Search" name="searchString">
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="date" class="form-control" value="@ViewBag.from_date " name="from_date">
+                        <input type="date" class="form-control" value="@ViewBag.to_date" placeholder="Đến ngày" name="to_date" />
+                    </div>                  
+                    
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            Loại sản phẩm
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="/Admin/Reports/Index?sortOrder=@ViewBag.iphone">Iphone</a></li>
+            <li><a href="/Admin/Reports/Index?sortOrder=@ViewBag.samsung">SamSung</a></li>
+            <li><a href="/Admin/Reports/Index?sortOrder=@ViewBag.oppo">Oppo</a></li>
+            <li><a href="/Admin/Reports/Index?sortOrder=@ViewBag.vivo">Vivo</a></li>
+        </ul>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            Số thứ tự
+        </th>
+
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Số lượng bán
+        </th>
+        <th>
+            Số lượng tồn
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="stt">
+            <td>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.productName)
+            </td>
+            <td>
+                @{
+                    // lấy đường dẫn file ảnh
+                    string ImagePath = "~/wwwroot/img/" + item.product.photo;
+                }
+                <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+            </td>
+            <td>
+                <span>@String.Format(cul, "{0:N0}", item.product.price)</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.stutus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_Detail.viewcount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_Detail.quantily)
+            </td>
+
+        </tr>
+    }
+
+</table>

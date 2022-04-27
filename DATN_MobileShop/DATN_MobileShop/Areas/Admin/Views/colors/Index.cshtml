@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebShopMobile_core.Models.color>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản lý màu sản phẩm</h2>
+
+<p>
+    <a href="/Admin/colors/Create" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Thêm mới</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã Màu
+        </th>
+        <th>
+            Tên màu
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color_name)
+        </td>
+        <td>
+            <a href="/Admin/colors/Edit/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Sửa</a>         
+            <a href="/Admin/colors/Delete/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>

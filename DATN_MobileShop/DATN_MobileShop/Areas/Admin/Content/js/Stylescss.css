@@ -1,0 +1,73 @@
+﻿
+.pagination {
+    margin:0!important;
+    float:right!important;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem!important;
+}
+    .pagination > .first {
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        line-height: 1.5;
+    }
+
+    .pagination > .prev {
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+    }
+
+    .pagination > .page {
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+    }
+    .pagination >.next {
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+    }
+    .pagination > .last {
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+    }
+
+    .pagination > .first > a {
+        position: relative;
+        display: block;
+    }
+
+    .pagination > .prev > a {
+        position: relative;
+        display: block;
+    }
+
+    .pagination > .page > a{
+        position: relative;
+        display: block;
+    }
+
+    .pagination > .next >a {
+        position: relative;
+        display: block;
+    }
+
+    .pagination > .last > a{
+        position: relative;
+        display: block;
+    }
+
+    .moreImgae{
+        width:40%!important;
+        height:40%!important;
+        position:relative;
+    }

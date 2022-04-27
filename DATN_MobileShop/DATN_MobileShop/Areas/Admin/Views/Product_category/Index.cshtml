@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebShopMobile_core.Models.Product_category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Loại sản phẩm</h2>
+<style type='text/css'>
+    table {
+        counter-reset: rowNumber;
+    }
+
+    .stt {
+        counter-increment: rowNumber;
+    }
+
+    table tr td:first-child::before {
+        content: counter(rowNumber);
+        min-width: 1em;
+        margin-right: 0.5em;
+    }
+</style>
+<p>
+    <a href="/Admin/Product_category/Create" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Thêm mới</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>Số thứ tự</th>
+        <th>
+            Tên loại sản phẩm
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Hiển thị
+        </th>
+        <th>
+            Ngày tạo
+        </th>
+        <th>
+            Cập nhật
+        </th>
+        <th>
+            Người tạo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="stt">
+        <td></td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stutus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.showonhome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.update_at)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createby)
+        </td>
+        <td>
+            <a href="/Admin/Product_category/Edit/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Sửa</a>
+            <a href="/Admin/Product_category/Delete/@item.id" class="btn btn-danger btn-lg active btn-sm" role="button" aria-pressed="true">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>

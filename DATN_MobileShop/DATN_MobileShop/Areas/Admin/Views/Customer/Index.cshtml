@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebShopMobile_core.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style type='text/css'>
+    table {
+        counter-reset: rowNumber;
+    }
+
+    .stt {
+        counter-increment: rowNumber;
+    }
+
+    table tr td:first-child::before {
+        content: counter(rowNumber);
+        min-width: 1em;
+        margin-right: 0.5em;
+    }
+</style>
+
+<p>
+    <a href="/Admin/Customer/Create" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Thêm mới</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Số thứ tự
+        </th>
+        <th>
+            Tên khách hàng
+        </th>       
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Thời gian tạo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="stt">
+        <td>
+          
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdate)
+        </td>
+        <td>                     
+            <a href="/Admin/Customer/Delete/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>

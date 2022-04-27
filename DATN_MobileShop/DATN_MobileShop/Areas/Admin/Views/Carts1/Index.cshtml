@@ -1,0 +1,120 @@
+﻿@model IEnumerable<WebShopMobile_core.Models.Carts>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style type='text/css'>
+    table {
+        counter-reset: rowNumber;
+    }
+
+    .stt {
+        counter-increment: rowNumber;
+    }
+
+    table tr td:first-child::before {
+        content: counter(rowNumber);
+        min-width: 1em;
+        margin-right: 0.5em;
+    }
+</style>
+@using System.Globalization;
+@{
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+}
+<p>
+    <a href="/Admin/Carts1/Create" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Thêm mới</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Số thứ tự
+        </th>
+        <th>
+            Tên Khách Hàng
+        </th>
+        <th>
+            Voucher áp dụng
+        </th>
+        <th>
+            Thời gian tạo
+        </th>
+        <th>
+            Cập nhật
+        </th>
+        <th>
+            Trạng thái Giao hàng
+        </th>
+        <th>
+            Địa chỉ giao hàng
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th>
+            Thanh toán
+        </th>
+        <th></th>
+    </tr>
+    <form>
+        @foreach (var item in Model)
+        {
+        <tr class="stt">
+            <td>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voucher.code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.create_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.update_at)
+            </td>
+            <td>            
+                @{
+                    if (item.statuss == true)
+                    {
+                        <p>Giao hàng thành công</p>
+                    }
+                    else if (item.statuss == false)
+                    {
+                        <p>Đang giao hàng</p>
+                    }
+                    else { <p>Chờ lấy hàng</p>}
+                        
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.address)
+            </td>
+            <td>
+                <span>@String.Format(cul, "{0:N0}", item.total)</span> 
+            </td>
+            <td>
+                @{
+                    if (item.payment == true)
+                    {
+                        <p>Đã thanh toán</p>
+                    }
+                    else if (item.payment == false)
+                    {
+                        <p>Chưa thanh toán</p>
+                    }                   
+                }
+            </td>
+            <td>
+                <a href="/Admin/Carts1/Edit/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Sửa</a>
+                <a href="/Admin/Carts1/Details/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Chi tiết</a>
+                <a href="/Admin/Carts1/Delete/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Xóa</a>
+                
+            </td>
+        </tr>
+    }
+        </form>
+    </table>

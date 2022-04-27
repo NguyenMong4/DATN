@@ -1,0 +1,387 @@
+﻿
+@{
+    ViewBag.Title = "Homes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Main Slider Start -->
+<div class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <nav class="navbar bg-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Index/"><i class="fa fa-home"></i>Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Product/Product_search?sortOrder=@ViewBag.sanphamnoibat"><i class="fa fa-shopping-bag"></i>Sản phẩm nổi bật</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Product/Product_search?sortOrder=@ViewBag.sanphammoi"><i class="fa fa-external-link-square"></i>Sản phẩm mới</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Product/Product_search?sortOrder=@ViewBag.pin"><i class="fa fa-battery-half"></i>Thời lượng pin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Product/Product_search?sortOrder=@ViewBag.gaming"><i class="fa fa-gamepad"></i>Gaming</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Product/Product_search?sortOrder=@ViewBag.tacvucoban"><i class="fa fa-mobile"></i>Tác vụ cơ bản</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Product/Product_search?sortOrder=@ViewBag.camera"><i class="fa fa-camera-retro fa-lg"></i>Camera vượt trội</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Product/Product_search?sortOrder=@ViewBag.manhinh"><i class="fa fa-film"></i>Màn hình sắc nét</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-6">
+
+                <div class="header-slider normal-slider">
+                    @foreach (var item in Model.list_advertisment)
+                    {
+                        <div class="header-slider-item">
+                            @{
+                                string ImgPath = "~/wwwroot/img/" + item.photo;
+                            }
+                            <img src='@Url.Content(ImgPath)' alt="Slider Image">
+                            <a href="/Product/Details/@item.id_product"></a>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="header-img">
+                    <div class="img-item">
+                        @{
+                            string ImgPaths = "~/wwwroot/img/" + @Model.av2.photo;
+                        }
+                        <img src="@Url.Content(ImgPaths)" alt="Slider Image">
+                        <a class="img-text" href="/Product/Details/@Model.av2.id_product">
+                            
+                        </a>
+                    </div>
+                    <div class="img-item">
+                        @{
+                            string ImgPathss = "~/wwwroot/img/" + @Model.av3.photo;
+                        }
+                        <img src="@Url.Content(ImgPathss)" alt="Slider Image">
+                        <a class="img-text" href="/Product/Details/@Model.av2.id_product">
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Slider End -->
+<!-- Brand Start -->
+<div class="brand">
+    <div class="container-fluid">
+        <div class="brand-slider">
+            <div class="brand-item"><img src="~/wwwroot/img/APPLE.png" alt=""></div>
+            <div class="brand-item"><img src="~/wwwroot/img/logo-cong-ty-samsung.jpg" alt=""></div>
+            <div class="brand-item"><img src="~/wwwroot/img/nokia_800x450.jpg" alt=""></div>
+            <div class="brand-item"><img src="~/wwwroot/img/oppo-ericsson-patent.png" alt=""></div>
+            <div class="brand-item"><img src="~/wwwroot/img/xiaomi.jpg" alt=""></div>
+            <div class="brand-item"><img src="~/wwwroot/img/realme.jpg" alt=""></div>
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+<!-- Feature Start-->
+<div class="feature">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fab fa-cc-mastercard"></i>
+                    <h2>Thanh toán trực tuyến</h2>
+                    <p>
+                        Thanh toán dễ dàng, an toàn và nhanh nhất
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-truck"></i>
+                    <h2>Giao hàng 24/7</h2>
+                    <p>
+                        Giao hàng toàn quốc, Giao hàng tận nơi
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-sync-alt"></i>
+                    <h2>15 ngày đổi trả</h2>
+                    <p>
+                        Chính sách bảo hành lâu dài
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-comments"></i>
+                    <h2>Hỗ trợ 24/7</h2>
+                    <p>
+                        Đội ngũ hỗ trợ mọi lúc, mọi nơi
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature End-->
+<!-- Category Start-->
+<div class="feature">
+
+    <!-- <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="category-item ch-400">
+                                <img src="img/category-3.jpg" />
+                                <a class="category-name" href="">
+                                    <p>Some text goes here that describes the image</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="category-item ch-250">
+                                <img src="img/category-4.jpg" />
+                                <a class="category-name" href="">
+                                    <p>Some text goes here that describes the image</p>
+                                </a>
+                            </div>
+                            <div class="category-item ch-150">
+                                <img src="img/category-5.jpg" />
+                                <a class="category-name" href="">
+                                    <p>Some text goes here that describes the image</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="category-item ch-150">
+                                <img src="img/category-6.jpg" />
+                                <a class="category-name" href="">
+                                    <p>Some text goes here that describes the image</p>
+                                </a>
+                            </div>
+                            <div class="category-item ch-250">
+                                <img src="img/category-7.jpg" />
+                                <a class="category-name" href="">
+                                    <p>Some text goes here that describes the image</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="category-item ch-400">
+                                <img src="img/category-8.jpg" />
+                                <a class="category-name" href="">
+                                    <p>Some text goes here that describes the image</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <!-- Category End-->
+    <!-- Call to Action Start
+    <div class="call-to-action">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1>call us for any queries</h1>
+                </div>
+                <div class="col-md-6">
+                    <a href="tel:0123456789">+012-345-6789</a>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- Call to Action End -->
+    <!-- Featured Product Start -->
+    <!-- Featured Product End -->
+    <!-- Newsletter Start -->
+    <div class="newsletter">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Đăng kí để nhận thông báo</h1>
+                </div>
+                <div class="col-md-6">
+                    <div class="form">
+                        <input type="email" value="Email của bạn">
+                        <button>Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Newsletter End -->
+    <!-- Recent Product Start -->
+    <div class="recent-product product">
+        <div class="container-fluid">
+            <div class="section-header">
+                <h2>Sản phẩm sắp ra mắt</h2>
+            </div>
+            <div class="row align-items-center product-slider product-slider-4">
+                @foreach (var item in Model.upcoming_products)
+                {
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">@item.productName</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="">
+                                @{
+                                    string ImgPath = "~/wwwroot/img/" + item.photo;
+                                }
+                                <img src="@Url.Content(ImgPath)" alt="Slider Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="@Url.Action("ThemGiohang", "Cart", new {@IDsanpham = item.id, @strURL = Request.Url.ToString()})"><i class="fa fa-shopping-cart"></i></a>
+                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <a href="/Product/Details/@item.id"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price product-price-home">
+                                <h3>@String.Format("{0:0,0}", item.price)<span>đ</span></h3>
+                                <a class="btn btn-home" href="@Url.Action("ThemGiohang", "Cart", new {@IDsanpham = item.id, @strURL = Request.Url.ToString()})"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="recent-product product">
+        <div class="container-fluid">
+            <div class="section-header">
+                <h2>Sản phẩm mới ra mắt</h2>
+            </div>
+            <div class="row align-items-center product-slider product-slider-4">
+                @foreach (var item in Model.topnew)
+                {
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">@item.productName</a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="">
+                                @{
+                                    string ImgPath = "~/wwwroot/img/" + item.photo;
+                                }
+                                <img src="@Url.Content(ImgPath)" alt="Slider Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="@Url.Action("ThemGiohang", "Cart", new {@IDsanpham = item.id, @strURL = Request.Url.ToString()})"><i class="fa fa-shopping-cart"></i></a>
+                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <a href="/Product/Details/@item.id"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price product-price-home">
+                                <h3>@String.Format("{0:0,0}", item.price)<span>đ</span></h3>
+                                <a class="btn btn-home" href="@Url.Action("ThemGiohang", "Cart", new {@IDsanpham = item.id, @strURL = Request.Url.ToString()})"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- Recent Product End -->
+    <!-- Review Start -->
+    <div class="review">
+        <div class="container-fluid">
+            <div class="row align-items-center review-slider normal-slider">
+                <div class="col-md-6">
+                    <div class="review-slider-item">
+                        <div class="review-img">
+                            <img src="~/wwwroot/img/coso3.jpg" alt="Image">
+                        </div>
+                        <div class="review-text">
+                            <h2>Cơ sở Hà Nội</h2>
+                            <h3>Cơ sở 1</h3>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p>
+                                78 ngõ 110, Đường Trần Duy Hưng, Phường Yên Hòa, Quận Cầu Giấy, Tp.Hà Nội
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="review-slider-item">
+                        <div class="review-img">
+                            <img src="~/wwwroot/img/coso2.jpg" alt="Image">
+                        </div>
+                        <div class="review-text">
+                            <h2>Cơ sở Hà Nội</h2>
+                            <h3>Cơ sở 2</h3>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p>
+                                118 ngõ 110, Đường Láng, Phường Trung Hòa, Quận Cầu Giấy, Tp.Hà Nội
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="review-slider-item">
+                        <div class="review-img">
+                            <img src="~/wwwroot/img/coso1.jpg" alt="Image">
+                        </div>
+                        <div class="review-text">
+                            <h2>Cơ sở Nam Định</h2>
+                            <h3>Cơ sở 3</h3>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p>
+                                222/52, Đường Trần Hưng Đạo, Phường Yên Hòa, Tp.Nam Định
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+    <!-- Review End -->

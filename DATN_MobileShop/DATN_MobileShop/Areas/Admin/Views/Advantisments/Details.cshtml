@@ -1,0 +1,75 @@
+﻿@model WebShopMobile_core.Models.Advantisment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Advantisment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.productName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.productName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statuss)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statuss)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.texts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.texts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posision)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.update_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.update_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

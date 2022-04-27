@@ -1,0 +1,98 @@
+﻿@model PagedList.IPagedList<WebShopMobile_core.Models.Employee>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header" style="margin:30px">
+                <h3 class="card-title">List Admin </h3>
+
+
+                <div class="card-tools">
+
+                    @using (Html.BeginForm("Index", "Admins", FormMethod.Get))
+                    {
+                        <div class="input-group input-group-sm" style="width: 300px;">
+                            <div class="input-group-append"><a href="/Admin/GroupAdmin/Index" class=" btn btn-default">Nhóm quyền</a></div>
+                            <div class="input-group-append"><a href="/Admin/Admins/Create" class=" btn btn-success">Tạo mới</a></div>
+                            <input type="text" name="searchString" value="@ViewBag.SearchString" class="form-control float-right" placeholder="Search">
+
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="margin-left:20px">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Addreess</th>
+                            <th>Phone</th>
+                            <th>Group Admin</th>
+                            <th>Create At</th>
+                            <th>Status</th>
+                            <th>Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr id="row_@item.id">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fullname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.pass)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GroupAdmin.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.createdate)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    <a href="/Admin/Admins/Edit/@item.id"><span class="fa fa-edit" style="color:cornflowerblue"></span></a> |
+                                    <a href="/Admin/Admins/Delete/@item.id"><span class="fa fa-trash-o" style="color:cornflowerblue"></span></a> 
+                                      
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
