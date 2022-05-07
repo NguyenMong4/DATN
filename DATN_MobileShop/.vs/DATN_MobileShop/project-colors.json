@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "8c82dbc5-c3e7-4e3c-b44f-8a029b4ea9d3": {
+      "ProjectGuid": "8c82dbc5-c3e7-4e3c-b44f-8a029b4ea9d3",
+      "DisplayName": "WebShopMobile_core",
+      "ColorIndex": 0
+    },
+    "2123c26e-9f5e-489e-b10e-7bd53a2b2977": {
+      "ProjectGuid": "2123c26e-9f5e-489e-b10e-7bd53a2b2977",
+      "DisplayName": "DATN_MobileShop",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

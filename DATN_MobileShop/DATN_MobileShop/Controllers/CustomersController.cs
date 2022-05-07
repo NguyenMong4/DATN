@@ -36,31 +36,31 @@ namespace DATN_MobileShop.Controllers
             int result = dao.checkPassWord(matkhau);
             if (String.IsNullOrEmpty(hoten))
             {
-                ViewData["tennguoidungnull"] = "không được để trống";
+                ViewData["tennguoidungnull"] = "Tên người dùng không được để trống";
             }
             else if (dao.checkusername(hoten) == 1)
             {
-                ViewData["tennguoidungnull"] = "Không được chứa kí tự đặc biệt";
+                ViewData["tennguoidungnull"] = "Tên người dùng không được chứa kí tự đặc biệt";
             }
             else if (String.IsNullOrEmpty(matkhau))
             {
-                ViewData["matkhaunull"] = "không được để trống";
+                ViewData["matkhaunull"] = "Mật khẩu không được để trống";
             }
             else if (String.IsNullOrEmpty(nhaplaimk))
             {
-                ViewData["nhaplaimatkhaunull"] = "không được để trống";
+                ViewData["nhaplaimatkhaunull"] = "Nhập lại mật khẩu không được để trống";
             }
             else if (String.IsNullOrEmpty(addr))
             {
-                ViewData["diachinull"] = "không được để trống";
+                ViewData["diachinull"] = "Địa chỉ không được để trống";
             }
             else if (String.IsNullOrEmpty(sdt))
             {
-                ViewData["sodienthoainull"] = "không được để trống";
+                ViewData["sodienthoainull"] = "Số điện thoại không được để trống";
             }
             else if (String.IsNullOrEmpty(email))
             {
-                ViewData["emailnull"] = "không được để trống";
+                ViewData["emailnull"] = "Email không được để trống";
             }
             else if (dao.checkEmail(email))
             {
@@ -82,7 +82,7 @@ namespace DATN_MobileShop.Controllers
                 ViewData["matkhaunull"] = "Mật khẩu phải bao gồm kí tự dặc biệt";
             else if (matkhau != nhaplaimk)
             {
-                ViewData["nhaplaimatkhaunull"] = "phải nhập đúng mật khẩu";
+                ViewData["nhaplaimatkhaunull"] = "Mật khẩu và nhập lại mật khẩu phải trùng nhau";
             }
             else
             {
@@ -121,11 +121,11 @@ namespace DATN_MobileShop.Controllers
             var pass = collection["pass"];
             if (String.IsNullOrEmpty(phone))
             {
-                ViewData["sodienthoainull"] = "không được để trống";
+                ViewData["sodienthoainull"] = "Số điện thoại không được để trống";
             }
             else if (String.IsNullOrEmpty(pass))
             {
-                ViewData["matkhaunull"] = "không được để trống";
+                ViewData["matkhaunull"] = "Mật khẩu không được để trống";
             }
             else
             {

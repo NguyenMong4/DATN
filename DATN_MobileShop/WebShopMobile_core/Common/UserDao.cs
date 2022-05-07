@@ -44,13 +44,13 @@ namespace WebShopMobile_core.Common
                 return 0;
             }
             else
-            {               
+            {
                 if (result.pass == matKhau)
                     return 2;
                 else
                     return -2;
             }
-        } 
+        }
         public int LoginAd(string sdt, string matKhau)
         {
             var result = db.Employee.SingleOrDefault(x => x.phone == sdt);
@@ -59,7 +59,7 @@ namespace WebShopMobile_core.Common
                 return 0;
             }
             else
-            {               
+            {
                 if (result.pass == matKhau)
                     return 2;
                 else
@@ -74,20 +74,20 @@ namespace WebShopMobile_core.Common
         public bool checkEmail(string email)
         {
             return db.Customer.Count(x => x.email == email) > 0;
-            
+
         }
-        public int checkPassWord (string pass)
+        public int checkPassWord(string pass)
         {
             var regexItem = new Regex("^[a-zA-Z0-9 ]*$");
-            int count = 0;           
+            int count = 0;
             if (pass.Length < 6)
             {
                 return 1;
             }
             else if (regexItem.IsMatch(pass))
-            {               
+            {
                 return 2;
-            }   
+            }
             else
             {
                 string space;
@@ -99,7 +99,7 @@ namespace WebShopMobile_core.Common
                 }
                 if (count > 0)
                     return 3;
-            }    
+            }
             return 0;
         }
         public int checkusername(string username)

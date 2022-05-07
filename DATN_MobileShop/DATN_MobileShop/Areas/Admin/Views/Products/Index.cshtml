@@ -30,42 +30,15 @@
     <div>
         <div class="row">
             <div class="col-md-12">
-                <div class="input-group-append"><a href="/Admin/Products/Create" class=" btn btn-success">Tạo mới</a></div>
+                <div class="input-group-append"><a href="/Admin/Products/Create" class=" btn btn-success">Thêm mới</a></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" value="@ViewBag.SearchString" placeholder="Search" name="searchString">
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
 
         </div>
-    </div>
 
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-            Loại sản phẩm
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a href="/Admin/Products/Index?sortOrder=@ViewBag.iphone">Iphone</a></li>
-            <li><a href="/Admin/Products/Index?sortOrder=@ViewBag.samsung">SamSung</a></li>
-            <li><a href="/Admin/Products/Index?sortOrder=@ViewBag.productNew">Sản Phẩm sắp ra mắt</a></li>
-            <li><a href="/Admin/Products/Index?sortOrder=@ViewBag.oppo">Oppo</a></li>
-            <li><a href="/Admin/Products/Index?sortOrder=@ViewBag.vivo">Vivo</a></li>
-        </ul>
-    </div>
+
+    
 }
 <table class="table table-hover table-bordered border-danger">
     <tr style="background :#9fcbe875">
@@ -83,12 +56,6 @@
         </th>
         <th>
             Giá
-        </th>
-        <th>
-            Khuyến mãi(%)
-        </th>
-        <th>
-            Trạng thái
         </th>
         <th>
             Ngày tạo
@@ -120,18 +87,7 @@
             <td>
                 <span>@String.Format(cul, "{0:N0}", item.price)</span>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.endow)
-            </td>
-            <td>
-                @{
-                    if (item.Product_detail.Where(n => n.id_product == item.id).Select(n => n.quantily).FirstOrDefault() == 0)
-                    { <p style="color:red">Hết hàng</p>}
-                    else
-                    { <p>Còn hàng</p>}
-
-                }
-            </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.createdate)
             </td>
@@ -140,14 +96,9 @@
             </td>
             <td>
                 <a href="/Admin/Products/Edit/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Sửa</a>
-                <a href="/Admin/Products/Details/@item.id" class="btn btn-info btn-lg active btn-sm" role="button" aria-pressed="true">Chi tiết</a>
+           
                 <a href="/Admin/Products/Delete/@item.id" class="btn btn-danger btn-lg active btn-sm" role="button" aria-pressed="true">Xóa</a>
-                <br />
-                @using (Html.BeginForm("AddQuantity", "Products", new { @id = item.id }))
-                {
-                    <input name="new_quantity" style="width:95px; font-size:11px" type="number" placeholder="Thêm số lượng" />
-                    <button class="tn" type="submit">Thêm</button>
-                }
+                
 
             </td>
         </tr>

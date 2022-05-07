@@ -2119,6 +2119,7 @@
     <Content Include="wwwroot\img\slider-3.jpg" />
     <Content Include="wwwroot\img\xiaomi.jpg" />
     <Content Include="wwwroot\img\zplip3.jpg" />
+    <Content Include="wwwroot\js\Define.js" />
     <Content Include="wwwroot\js\main.js" />
     <Content Include="wwwroot\lib\easing\easing.js" />
     <Content Include="wwwroot\lib\easing\easing.min.js" />

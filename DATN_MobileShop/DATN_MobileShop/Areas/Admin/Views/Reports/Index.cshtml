@@ -82,9 +82,6 @@
             Giá
         </th>
         <th>
-            Trạng thái
-        </th>
-        <th>
             Số lượng bán
         </th>
         <th>
@@ -111,9 +108,7 @@
             <td>
                 <span>@String.Format(cul, "{0:N0}", item.product.price)</span>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.product.stutus)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.product_Detail.viewcount)
             </td>

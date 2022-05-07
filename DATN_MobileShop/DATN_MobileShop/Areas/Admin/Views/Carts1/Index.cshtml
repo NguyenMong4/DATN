@@ -24,6 +24,7 @@
 @{
     CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
 }
+<h2> Danh sách đơn hàng</h2>
 <p>
     <a href="/Admin/Carts1/Create" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Thêm mới</a>
 </p>
@@ -33,10 +34,7 @@
             Số thứ tự
         </th>
         <th>
-            Tên Khách Hàng
-        </th>
-        <th>
-            Voucher áp dụng
+            Tên khách hàng
         </th>
         <th>
             Thời gian tạo
@@ -45,7 +43,7 @@
             Cập nhật
         </th>
         <th>
-            Trạng thái Giao hàng
+            Trạng thái giao hàng
         </th>
         <th>
             Địa chỉ giao hàng
@@ -54,7 +52,7 @@
             Tổng tiền
         </th>
         <th>
-            Thanh toán
+            Trạng thái thanh toán
         </th>
         <th></th>
     </tr>
@@ -66,9 +64,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Customer.fullname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Voucher.code)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.create_date)
@@ -110,7 +105,7 @@
             </td>
             <td>
                 <a href="/Admin/Carts1/Edit/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Sửa</a>
-                <a href="/Admin/Carts1/Details/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Chi tiết</a>
+               
                 <a href="/Admin/Carts1/Delete/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Xóa</a>
                 
             </td>

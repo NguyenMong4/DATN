@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Loại sản phẩm</h2>
+<h2>Danh sách danh mục</h2>
 <style type='text/css'>
     table {
         counter-reset: rowNumber;
@@ -32,20 +32,12 @@
             Tên loại sản phẩm
         </th>
         <th>
-            Trạng thái
-        </th>
-        <th>
-            Hiển thị
-        </th>
-        <th>
             Ngày tạo
         </th>
         <th>
             Cập nhật
         </th>
-        <th>
-            Người tạo
-        </th>
+      
         <th></th>
     </tr>
 
@@ -55,21 +47,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.category_name)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.stutus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.showonhome)
-        </td>
+     
         <td>
             @Html.DisplayFor(modelItem => item.createdate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.update_at)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.createby)
-        </td>
+      
         <td>
             <a href="/Admin/Product_category/Edit/@item.id" class="btn btn-success btn-lg active btn-sm" role="button" aria-pressed="true">Sửa</a>
             <a href="/Admin/Product_category/Delete/@item.id" class="btn btn-danger btn-lg active btn-sm" role="button" aria-pressed="true">Xóa</a>
